@@ -28,7 +28,7 @@ async def root():
 
 #path parameters
 @app.get("/get-user/{user_id}")
-def get_user(user_id: int = Path( ..., description="User Id of the user you want" , gt=0, lt=3)):
+def get_user(user_id: int = Path( ..., description="User Id of the user you want" , gt=0, lt=5)):
     return users[user_id]
 
 
@@ -64,11 +64,11 @@ def update_user(user_id: int, user: UpdateUser):
         return {"message": "User does not exist"}
     
     if user.name != None:
-        users[user_id]['name']  = user.name
+        users[user_id].name  = user.name
     if user.age != None:
-        users[user_id]['age']  = user.age
+        users[user_id].age  = user.age
     if user.email != None:
-        users[user_id]['email']  = user.email
+        users[user_id].email  = user.email
 
     return users[user_id]
 
